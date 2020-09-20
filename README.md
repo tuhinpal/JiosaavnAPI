@@ -115,7 +115,8 @@ http://localhost:8080/song?id=64m9f3mF
 }
 ```
 
-*<tt>media_url</tt> Object Contains Download Link.*
+*<tt>media_url</tt> Object Contains Download Link.*<br>
+*Replace 96 with 320 or 160 in <tt>media_url</tt> to get different Qualities.*
 
 **3. Lyrics (Method - Get):**
 
@@ -127,7 +128,7 @@ http://[Your-Url]/lyrics?id={Song-ID}
 //example
 http://localhost:8080/lyrics?id=PIzj75J8
 ```
-*The Song Id is Previously Fetched <tt>ID</tt> Parameter from Search.*
+*The Song Id is Previously Fetched <tt>ID</tt> Object from Search.*
 
 ***Result:***
 ```json
