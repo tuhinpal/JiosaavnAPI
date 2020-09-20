@@ -26,7 +26,8 @@ app.get('/search', (req, res) => {
     request(options, function(error, response) {
         if (error) throw new Error(error);
         var searchraw = (response.body);
-        var result = JSON.parse(searchraw);
+        var imgq = searchraw.replace(/50x50/gi, "500x500");
+        var result = JSON.parse(imgq);
         var songresult = result.songs.data;
         var output = JSON.stringify(songresult);
         res.send(output);
@@ -51,8 +52,9 @@ app.get('/song', (req, res) => {
         var replaceid = songraw.replace(id, 'tuhin');
         var replacemediaurltxt = replaceid.replace('media_preview_url', 'media_url');
         var replacemediaurl = replacemediaurltxt.replace('preview.saavncdn.com', 'aac.saavncdn.com');
-        var replaceqs = replacemediaurl.replace('_96_p', '_96');
-        var result = JSON.parse(replaceqs);
+        var replaceqs = replacemediaurl.replace('_96_p', '_160');
+        var imgq = replaceqs.replace('150x150', '500x500');
+        var result = JSON.parse(imgq);
         var songresult = result.tuhin;
         var output = JSON.stringify(songresult);
         res.send(output);
