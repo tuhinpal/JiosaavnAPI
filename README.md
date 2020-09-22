@@ -138,15 +138,29 @@ http://localhost:8080/lyrics?id=PIzj75J8
 <br><br>
 ### Deploy Your Own:<br>
 
-**NodeJS & Npm are Required.**<br>
+**NodeJS & Npm are Required.**<br><br>
+*For Development 👇*
 
 ```bash
-apt install nodejs & npm
+apt install npm
+apt install nodejs
 
 git clone https://github.com/cachecleanerjeet/jiosaavnapi.git
 cd jiosaavnapi
 npm install
 node index.js
+```
+
+*Running always in a server 👇*
+
+```bash
+apt install npm
+apt install nodejs
+
+git clone https://github.com/cachecleanerjeet/jiosaavnapi.git
+npm install
+npm install forever -g
+forever start index.js
 ```
 
 *Heroku Coming Soon*<br>
