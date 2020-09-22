@@ -149,9 +149,14 @@ npm install
 node index.js
 ```
 
-*Heroku Coming Soon*
+*Heroku Coming Soon*<br>
 
-<br><br>
+### Using this API:
+- [Musicder](https://github.com/cachecleanerjeet/Musicder "Musicder")
+- [Musicder Bot](https://t.me/musicder_bot "Musicder Bot")
+
+*Impliment this API on your Project  & send a message [here](https://t.me/t_projects "here") to get featured in this section.*
+<br>
 ## Star this Repo if you Liked it ⭐⭐⭐
 
 <br><br>
