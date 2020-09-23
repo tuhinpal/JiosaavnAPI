@@ -28,9 +28,15 @@ app.get('/search', (req, res) => {
         var searchraw = (response.body);
         var imgq = searchraw.replace(/50x50/gi, "500x500");
         var result = JSON.parse(imgq);
-        var songresult = result.songs.data;
-        var output = JSON.stringify(songresult);
-        res.send(output);
+        var check = result.songs;
+        //error handling
+        if (check === undefined) {
+            res.send(`{"result": "false"}`);
+        } else {
+            var songresult = result.songs.data;
+            var output = JSON.stringify(songresult);
+            res.send(output);
+        }
     });
     res.status(200);
     res.header('Access-Control-Allow-Origin', '*');
@@ -49,15 +55,21 @@ app.get('/song', (req, res) => {
     request(options, function(error, response) {
         if (error) throw new Error(error);
         var songraw = (response.body);
-        var replaceid = songraw.replace(id, 'tuhin');
-        var replacemediaurltxt = replaceid.replace('media_preview_url', 'media_url');
-        var replacemediaurl = replacemediaurltxt.replace('preview.saavncdn.com', 'aac.saavncdn.com');
-        var replaceqs = replacemediaurl.replace('_96_p', '_160');
-        var imgq = replaceqs.replace('150x150', '500x500');
-        var result = JSON.parse(imgq);
-        var songresult = result.tuhin;
-        var output = JSON.stringify(songresult);
-        res.send(output);
+        //error handling
+        if ((songraw.includes("[]")) == true) {
+            res.send(`{"result": "false"}`);
+        } else {
+            var replaceid = songraw.replace(id, 'tuhin');
+            var replacemediaurltxt = replaceid.replace('media_preview_url', 'media_url');
+            var replacemediaurl = replacemediaurltxt.replace('preview.saavncdn.com', 'aac.saavncdn.com');
+            var replaceqs = replacemediaurl.replace('_96_p', '_160');
+            var imgq = replaceqs.replace('150x150', '500x500');
+            var result = JSON.parse(imgq);
+            var songresult = result.tuhin;
+            var output = JSON.stringify(songresult);
+            res.send(output);
+        }
+
     });
     res.status(200);
     res.header('Access-Control-Allow-Origin', '*');
@@ -78,8 +90,13 @@ app.get('/lyrics', (req, res) => {
         var lyricsraw = (response.body);
         var result = JSON.parse(lyricsraw);
         var lyricsresult = result.lyrics;
-        var format = `{"lyrics":"` + (lyricsresult) + `"}`;
-        res.send(format);
+        //error handling
+        if (lyricsresult === undefined) {
+            res.send(`{"result": "false"}`);
+        } else {
+            var format = `{"lyrics":"` + (lyricsresult) + `"}`;
+            res.send(format);
+        }
     });
     res.status(200);
     res.header('Access-Control-Allow-Origin', '*');
