@@ -165,6 +165,16 @@ forever start index.js
 
 *Heroku Coming Soon*<br>
 
+
+### Error handling :
+*If something error happens you will get this result in json 👇*
+
+```bash
+{"result": "false"}
+```
+
+<br>
+
 ### Using this API:
 - [Musicder](https://github.com/cachecleanerjeet/Musicder "Musicder")
 - [Musicder Bot](https://t.me/musicder_bot "Musicder Bot")
