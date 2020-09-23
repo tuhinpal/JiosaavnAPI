@@ -158,6 +158,7 @@ apt install npm
 apt install nodejs
 
 git clone https://github.com/cachecleanerjeet/jiosaavnapi.git
+cd jiosaavnapi
 npm install
 npm install forever -g
 forever start index.js
