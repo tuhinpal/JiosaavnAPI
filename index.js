@@ -5,7 +5,6 @@
 const express = require('express');
 const request = require('request');
 const app = express()
-const port = process.env.PORT || 8080
 
 //base urls
 const searchbase = "https://www.jiosaavn.com/api.php?__call=autocomplete.get&_format=json&_marker=0&cc=in&includeMetaTags=1&query=";
@@ -165,6 +164,53 @@ app.get('/album', (req, res) => {
     res.header('Open-Source', 'https://github.com/cachecleanerjeet/jiosaavnapi');
 })
 
-app.listen(port, () => {
+// getting song from Jiosaavn link
+app.get('/link', (req, res) => {
+    let query = req.query.query;
+
+    var getsid = {
+        'method': 'GET',
+        'url': query
+    };
+    request(getsid, function(error, response) {
+        if (error) {
+            res.send(`{"result": "false"}`);
+        } else {
+            if (response.body.split('"song":{"type":"')[1] == undefined) {
+                res.send(`{"result": "false"}`);
+            } else {
+                try {
+                    var sid = response.body.split('"song":{"type":"')[1].split('","image":')[0].split('"')[8];
+                } catch (err) {
+                    var sid = response.body.split('"params":{"pid":"')[1].split('"')[0];
+                }
+                var options = {
+                    'method': 'GET',
+                    'url': (songbase) + (sid)
+                };
+                request(options, function(error, response) {
+                    if (error) throw new Error(error);
+                    var songraw = (response.body);
+                    var replaceid = songraw.replace(sid, 'tuhin');
+                    var replacemediaurltxt = replaceid.replace('media_preview_url', 'media_url');
+                    var replacemediaurl = replacemediaurltxt.replace('preview.saavncdn.com', 'aac.saavncdn.com');
+                    var replaceqs = replacemediaurl.replace('_96_p', '_160');
+                    var imgq = replaceqs.replace('150x150', '500x500');
+                    var result = JSON.parse(imgq);
+                    var songresult = result.tuhin;
+                    var output = JSON.stringify(songresult);
+                    res.send(output);
+                })
+            }
+        }
+    });
+    res.status(200);
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Content-Type', 'application/json');
+    res.header('Cache-Control', 'no-cache, no-store, must-revalidate');
+    res.header('Open-Source', 'https://github.com/cachecleanerjeet/jiosaavnapi');
+})
+
+app.listen(process.env.PORT || 8080, () => {
     console.log('Listening')
 })
