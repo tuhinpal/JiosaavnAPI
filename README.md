@@ -18,33 +18,33 @@
 http://[Your-Url]/search?query={song-name}
 
 //example
-http://localhost:8080/search?query=tomake+chai
+http://localhost:8080/search?query=makhna
 ```
 
 ***Result:***
 
 ```json
 [
-  {
-    "id": "64m9f3mF",
-    "title": "Tomake Chai",
-    "image": "http://c.saavncdn.com/107/Gangster-Bengali-2016-20200617113007-50x50.jpg",
-    "album": "Gangster",
-    "url": "https://www.jiosaavn.com/song/tomake-chai/RlwGCBIDWnU",
-    "type": "song",
-    "description": "Gangster · Arijit Singh",
-    "ctr": 453,
-    "position": 1,
-    "more_info": {
-      "vcode": "010910090246873",
-      "vlink": "https://jiotunepreview.jio.com/content/Converted/010910090259515.mp3",
-      "primary_artists": "Arijit Singh",
-      "singers": "Arijit Singh",
-      "video_available": false,
-      "language": "bengali"
-    }
-  },
-## More
+    {
+        "id": "hotE59KE",
+        "title": "Makhna",
+        "image": "http://c.saavncdn.com/622/Drive-Hindi-2019-20191014095305-500x500.jpg",
+        "album": "Drive",
+        "url": "https://www.jiosaavn.com/song/makhna/GAcfdEEJfHY",
+        "type": "song",
+        "description": "Drive · Tanishk Bagchi, Asees Kaur, Yasser Desai",
+        "ctr": 8637,
+        "position": 1,
+        "more_info": {
+            "vcode": "010910441009482",
+            "vlink": "https://jiotunepreview.jio.com/content/Converted/010910440962648.mp3",
+            "primary_artists": "Tanishk Bagchi, Asees Kaur, Yasser Desai",
+            "singers": "Tanishk Bagchi, Asees Kaur, Yasser Desai",
+            "video_available": false,
+            "language": "hindi"
+        }
+    },
+    ## More   
 ]
 ```
 
@@ -58,65 +58,69 @@ http://localhost:8080/search?query=tomake+chai
 http://[Your-Url]/song?id={Song-Id}
 
 //example
-http://localhost:8080/song?id=64m9f3mF
+http://localhost:8080/song?id=hotE59KE
 ```
 *The Song Id is Previously Fetched <tt>ID</tt> Object from Search.*
 
 ***Result:***
 ```json
 {
-  "id": "64m9f3mF",
-  "type": "",
-  "song": "Tomake Chai",
-  "album": "Gangster",
-  "year": "2016",
-  "music": "Arindom Chatterjee",
-  "music_id": "3000685",
-  "primary_artists": "Arijit Singh",
-  "primary_artists_id": "459320",
-  "featured_artists": "",
-  "featured_artists_id": "",
-  "singers": "Arijit Singh",
-  "starring": "",
-  "image": "https://c.saavncdn.com/107/Gangster-Bengali-2016-20200617113007-150x150.jpg",
-  "label": "Shree Venkatesh Films Pvt. Ltd.",
-  "albumid": "14848152",
-  "language": "bengali",
-  "origin": "none",
-  "play_count": 1898618,
-  "copyright_text": "© 2016 Shree Venkatesh Films Pvt. Ltd.",
-  "320kbps": "true",
-  "explicit_content": 0,
-  "has_lyrics": "false",
-  "lyrics_snippet": null,
-  "encrypted_media_url": "ID2ieOjCrwfgWvL5sXl4B1ImC5QfbsDyU6kS5cTgAOZwc1Myr6lsvU0yBVpz2a3wlEJMTPNwn3PC37XLIJdYPxw7tS9a8Gtq",
-  "encrypted_media_path": "NMKyboFo/FgVX0zn5FiA7QIk4lZ82WrnX11fX2llODH70a++ApvauCPwKpPF2hEB",
-  "media_url": "https://aac.saavncdn.com/107/6470b05128857a909f67285afb56b4d8_96.mp4",
-  "perma_url": "https://www.jiosaavn.com/song/tomake-chai/RlwGCBIDWnU",
-  "album_url": "https://www.jiosaavn.com/album/gangster/F61FH7vf1,8_",
-  "duration": "253",
-  "rights": {
-    "code": 0,
-    "reason": "",
-    "cacheable": true,
-    "delete_cached_object": false
-  },
-  "cache_state": "false",
-  "starred": "false",
-  "artistMap": {
-    "Arindom Chatterjee": "3000685",
-    "Arijit Singh": "459320",
-    "Prasen": "532403"
-  },
-  "release_date": "2016-09-04",
-  "vcode": "010910090246873",
-  "vlink": "https://jiotunepreview.jio.com/content/Converted/010910090259515.mp3",
-  "label_url": "/label/shree-venkatesh-films-pvt.-ltd.-albums/9ijex,8qafE_"
+    "id": "hotE59KE",
+    "type": "",
+    "song": "Makhna",
+    "album": "Drive",
+    "year": "2019",
+    "music": "Tanishk Bagchi",
+    "music_id": "1595701",
+    "primary_artists": "Tanishk Bagchi, Asees Kaur, Yasser Desai",
+    "primary_artists_id": "1595701, 706985, 2135738",
+    "featured_artists": "",
+    "featured_artists_id": "",
+    "singers": "Tanishk Bagchi, Asees Kaur, Yasser Desai",
+    "starring": "Sushant Singh Rajput, Jacqueline Fernandez",
+    "image": "https://c.saavncdn.com/622/Drive-Hindi-2019-20191014095305-500x500.jpg",
+    "label": "Zee Music Co.",
+    "albumid": "17488163",
+    "language": "hindi",
+    "origin": "none",
+    "play_count": 73818421,
+    "copyright_text": "© 2019 Zee Music Company",
+    "320kbps": "true",
+    "explicit_content": 0,
+    "has_lyrics": "true",
+    "lyrics_snippet": "main chhod aayi gharbaar mera",
+    "encrypted_media_url": "ID2ieOjCrwfgWvL5sXl4B1ImC5QfbsDyGqo+5MrAN0crj0vrJ4LG1QUl4LRZ1OTzPHArN3M6vWMEJ5wtvfCrxBw7tS9a8Gtq",
+    "encrypted_media_path": "NMKyboFo/FiKibPkFFfY50RNDB52X6LHqriY+0xcZsNMl2dstkWwpIvUdTM1PLl8",
+    "media_url": "https://aac.saavncdn.com/622/c1a0e6f34388089a4c52c1026bee0831_160.mp4",
+    "perma_url": "https://www.jiosaavn.com/song/makhna/GAcfdEEJfHY",
+    "album_url": "https://www.jiosaavn.com/album/drive/SG7tqyDYavU_",
+    "duration": "183",
+    "rights": {
+        "code": 0,
+        "reason": "",
+        "cacheable": true,
+        "delete_cached_object": false
+    },
+    "cache_state": "false",
+    "starred": "false",
+    "artistMap": {
+        "Tanishk Bagchi": "1595701",
+        "Asees Kaur": "706985",
+        "Yasser Desai": "2135738",
+        "Ozil Dalal": "675439",
+        "Sushant Singh Rajput": "2180329",
+        "Jacqueline Fernandez": "480380"
+    },
+    "release_date": "2019-10-10",
+    "vcode": "010910441009482",
+    "vlink": "https://jiotunepreview.jio.com/content/Converted/010910440962648.mp3",
+    "label_url": "/label/zee-music-co.-albums/06cepoPTlhU_"
 }
 ```
 
 *<tt>media_url</tt> Object Contains Download Link.*<br>
-*Replace 96 with 320 or 160 in <tt>media_url</tt> to get different Qualities.*
+*Replace 160 with 320 or 96 in <tt>media_url</tt> to get different Qualities.*<br>
+*Note <tt>albumid</tt> Object if you want to fetch it's album also.*<br>
 
 **3. Lyrics (Method - Get):**
 
@@ -126,14 +130,127 @@ http://localhost:8080/song?id=64m9f3mF
 http://[Your-Url]/lyrics?id={Song-ID}
 
 //example
-http://localhost:8080/lyrics?id=PIzj75J8
+http://localhost:8080/lyrics?id=hotE59KE
 ```
 *The Song Id is Previously Fetched <tt>ID</tt> Object from Search.*
 
 ***Result:***
 ```json
-{"lyrics":"ye ruhadaariyaan<br>tujhi se, judi he meri<br>ye daavedaariyaan<br>mujhi pe, likhi he teri<br><br>rihana ke to jaisaa tu figure rakhdi<br>te phulan ke jaisaa tu jigar rakhdi<br>bhula ke jag sara he nigahen tak di<br><br>te biba nachdi<br>te biba nachdi<br>roke naa ruk di<br>te biba nachdi<br><br>voh, main raataan saariyaan<br>guzaru asar main teri<br>main chhad duniya<br>ve rahanaa nazar main teri<br>main munda sidhaa-saadhaa<br>te hegi kudi tu jet di<br>tu aave te chori chori kolo tak di<br>nishane maare tu bullate ankh di<br><br>te biba nachdi<br>he biba nachdi<br>roke naa ruk di<br>je biba nachdi<br><br>ishq se rubaru hoon<br>teri main hoobahoo hoon<br>kuch bhi lage naa mushkil, mahiya<br>ye raaten mulakaato ke hi naam kardi<br>tarifon ko jahaan kii hoon salaam kardi<br>naa hatati he nazar mujhe jo tak di<br><br>te biba nachdi<br>je biba nachdi<br>roke naa ruk di<br>je biba nachdi<br>je biba nachdi"}
+{
+    "lyrics": "ye bhee naa jaane  vo bhee naa jaane<br>nainon ke rang naina jaane<br>mila jo sang tera<br>uda patang mera hawa mein hoke malang<br><br>jag kee koyi reet naa jaani<br>main to bas teri hui deewaanii<br>mila jo sang tera<br>uda patang mera hawa mein hoke malang<br><br>main chhod aayi gharbaar mera<br>oh makhnas  ve makhnas<br>ab too hee hai sansar mera<br>oh makhnas  ve makhnas<br><br>ye paagal sa hai pyaar mera<br>oh makhnas  ve makhnas<br>main chhod aayi gharbaar mera<br>oh  makhnas<br><br>main chhod aayi gharbaar mera<br>oh makhnas  ve makhnas<br>ab too hee hai sansar mera<br>oh makhnas  ve makhnas<br><br>ye paagal sa hai pyaar mera<br>oh makhnas  ve makhnas<br>main chhod aayi gharbaar mera<br>oh  makhnas<br><br>makhnas ve<br><br>teri hee baathen ho  subah see raaten ho<br>jab se mila hai too dil ko mila sukun<br>tu hi raah meri  tu hi safar he<br>teri bahon mein ab mera ghar hai<br><br>chain naa jaane  dard na jaane<br>dil to bas dil ko pahachaane<br>mila jo sang tera<br>uda patang mera hawa mein hoke malang<br><br>main chhod aayi gharbaar mera<br>oh makhnas  ve makhnas<br>ab too hee hai sansar mera<br>oh makhnas  ve makhnas<br><br>ye paagal sa hai pyaar mera<br>oh makhnas  ve makhnas<br>main chhod aayi gharbaar mera<br>oh  makhnas<br><br>chhod aayi gharbaar mera<br>too hee hai sansar mera<br>ye paagal sa hai pyaar mera<br>main chhod aayi gharbaar mera<br><br>main chhod aayi gharbaar mera  ਓ  ਮੱਖਣਾਂ<br>tu hi he sansar meraa  ਮੱਖਣਾਂ<br>ye paagal sa hai pyaar mera  ਓ  ਮੱਖਣਾਂ<br>main chhod aayi gharbaar mera  ਓ  ਮੱਖਣਾਂ"
+}
 ```
+
+**4. Search Album (Method - Get):**
+
+***Request:***
+
+```html
+http://[Your-Url]/albumsearch?query={Album-Name}
+
+//example
+http://localhost:8080/albumsearch?query=drive
+```
+
+
+***Result:***
+```json
+[
+    {
+        "id": "17488163",
+        "title": "Drive",
+        "image": "http://c.saavncdn.com/622/Drive-Hindi-2019-20191014095305-500x500.jpg",
+        "music": "Tanishk Bagchi, Amartya Bobo Rahut, Javed-Mohsin",
+        "url": "https://www.jiosaavn.com/album/drive/SG7tqyDYavU_",
+        "type": "album",
+        "description": "2019 · Hindi Film · Tanishk Bagchi, Amartya Bobo Rahut, Javed-Mohsin",
+        "ctr": 1411,
+        "position": 1,
+        "more_info": {
+            "year": "2019",
+            "is_movie": "1",
+            "language": "hindi",
+            "song_pids": "lD6HFeIu, tW3mNpl7, hotE59KE, vbThKk4U, GT1fVFAe"
+        }
+    },
+   ##More
+]
+```
+
+*<tt>song_pids</tt> Object Contains all song id(s) of the Album.*<br>
+*<tt>id</tt> Object is the Album ID.*<br>
+
+
+**5. Fetch detail of an Album (Method - Get):**
+
+***Request:***
+
+```html
+http://[Your-Url]/album?id={Album-Id}
+
+//example
+http://localhost:8080/album?id=17488163
+```
+
+
+*The Album Id is Previously Fetched <tt>ID</tt> Object from <tt>albumsearch</tt>.*
+
+
+***Result:***
+```json
+{
+    "title": "Drive",
+    "name": "Drive",
+    "year": "2019",
+    "release_date": "2019-10-10",
+    "primary_artists": "Tanishk Bagchi, Amartya Bobo Rahut, Javed-Mohsin",
+    "primary_artists_id": "1595701, 7044553, 5393135",
+    "albumid": "17488163",
+    "perma_url": "https://www.jiosaavn.com/album/drive/SG7tqyDYavU_",
+    "image": "https://c.saavncdn.com/622/Drive-Hindi-2019-20191014095305-500x500.jpg",
+    "songs": [
+        {
+            "id": "hotE59KE",
+            "type": "",
+            "song": "Makhna",
+            "album": "Drive",
+            "year": "2019",
+            "music": "Tanishk Bagchi",
+            "music_id": "1595701",
+            "primary_artists": "Tanishk Bagchi, Asees Kaur, Yasser Desai",
+            "primary_artists_id": "1595701, 706985, 2135738",
+            "featured_artists": "",
+            "featured_artists_id": "",
+            "singers": "Tanishk Bagchi, Asees Kaur, Yasser Desai",
+            "starring": "Sushant Singh Rajput, Jacqueline Fernandez",
+            "image": "https://c.saavncdn.com/622/Drive-Hindi-2019-20191014095305-500x500.jpg",
+            "label": "Zee Music Co.",
+            "albumid": "17488163",
+            "language": "hindi",
+            "origin": "album",
+            "play_count": "73819268",
+            "copyright_text": "© 2019 Zee Music Company",
+            "320kbps": "true",
+            "explicit_content": 0,
+            "has_lyrics": "true",
+            "lyrics_snippet": "main chhod aayi gharbaar mera",
+            "encrypted_media_url": "ID2ieOjCrwfgWvL5sXl4B1ImC5QfbsDyGqo+5MrAN0crj0vrJ4LG1QUl4LRZ1OTzPHArN3M6vWMEJ5wtvfCrxBw7tS9a8Gtq",
+            "encrypted_media_path": "NMKyboFo/FiKibPkFFfY50RNDB52X6LHqriY+0xcZsNMl2dstkWwpIvUdTM1PLl8",
+            "media_url": "https://aac.saavncdn.com/622/c1a0e6f34388089a4c52c1026bee0831_160.mp4",
+            "perma_url": "https://www.jiosaavn.com/song/makhna/GAcfdEEJfHY",
+            "album_url": "https://www.jiosaavn.com/album/drive/SG7tqyDYavU_",
+            "duration": "183",
+            "rights": {
+                "code": 0,
+                "reason": "",
+                "cacheable": true,
+                "delete_cached_object": false
+            },
+ ##More
+ }
+```
+*<tt>media_url</tt> Object Contains Download Link.*<br>
+*Replace 160 with 320 or 96 in <tt>media_url</tt> to get different Qualities.*
 
 <br><br>
 ### Deploy Your Own:<br>
