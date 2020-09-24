@@ -5,7 +5,7 @@
 const express = require('express');
 const request = require('request');
 const app = express()
-const port = 8080
+const port = process.env.PORT || 8080
 
 //base urls
 const searchbase = "https://www.jiosaavn.com/api.php?__call=autocomplete.get&_format=json&_marker=0&cc=in&includeMetaTags=1&query=";
@@ -166,5 +166,5 @@ app.get('/album', (req, res) => {
 })
 
 app.listen(port, () => {
-    console.log('Listening on Port 8080')
+    console.log('Listening')
 })
