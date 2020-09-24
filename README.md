@@ -281,7 +281,8 @@ npm install forever -g
 forever start index.js
 ```
 
-*Heroku Coming Soon*<br>
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/cachecleanerjeet/jiosaavnapi/tree/master)<br>
 
 
 ### Error handling :
