@@ -1,0 +1,7 @@
+{
+    "name": "Jiosaavn API",
+    "description": "Jiosaavn Unofficial API Written in Javascript",
+    "repository": "https://github.com/cachecleanerjeet/jiosaavnapi",
+    "logo": "https://telegra.ph/file/5955945c192ea89150c66.png",
+    "keywords": ["jiosaavn", "jiosaavn-api", "node-js", "music", "javascript", "express"]
+}
