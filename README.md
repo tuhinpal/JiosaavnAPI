@@ -252,12 +252,12 @@ http://localhost:8080/album?id=17488163
 *<tt>media_url</tt> Object Contains Download Link.*<br>
 *Replace 160 with 320 or 96 in <tt>media_url</tt> to get different Qualities.*
 
-**6. Get Song from Jiosaavn Link (Method - Get):**
+**6. Get Song from Jiosaavn Song Link (Method - Get):**
 
 ***Request:***
 
 ```html
-http://[Your-Url]/link?query={Jiosaavn-Link}
+http://[Your-Url]/link?query={Jiosaavn-Song-Link}
 
 //example
 http://localhost:8080/link?query=https://www.jiosaavn.com/song/makhna/GAcfdEEJfHY
