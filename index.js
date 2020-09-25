@@ -27,7 +27,8 @@ app.get('/search', (req, res) => {
         if (error) throw new Error(error);
         var searchraw = (response.body);
         var imgq = searchraw.replace(/50x50/gi, "500x500");
-        var result = JSON.parse(imgq);
+        var ampr = imgq.replace(/&amp;/gi, "&");
+        var result = JSON.parse(ampr);
         var check = result.songs;
         //error handling
         if (check === undefined) {
@@ -64,7 +65,9 @@ app.get('/song', (req, res) => {
             var replacemediaurl = replacemediaurltxt.replace('preview.saavncdn.com', 'aac.saavncdn.com');
             var replaceqs = replacemediaurl.replace('_96_p', '_160');
             var imgq = replaceqs.replace('150x150', '500x500');
-            var result = JSON.parse(imgq);
+            var ampr = imgq.replace(/&amp;/gi, "&");
+            var copr = ampr.replace(/&copy;/gi, "©");
+            var result = JSON.parse(copr);
             var songresult = result.tuhin;
             var output = JSON.stringify(songresult);
             res.send(output);
@@ -94,7 +97,8 @@ app.get('/lyrics', (req, res) => {
         if (lyricsresult === undefined) {
             res.send(`{"result": "false"}`);
         } else {
-            var format = `{"lyrics":"` + (lyricsresult) + `"}`;
+            var quoter = lyricsresult.replace(/"/gi, "'");
+            var format = `{"lyrics":"` + (quoter) + `"}`;
             res.send(format);
         }
     });
@@ -116,7 +120,8 @@ app.get('/albumsearch', (req, res) => {
         if (error) throw new Error(error);
         var searchraw = (response.body);
         var imgq = searchraw.replace(/50x50/gi, "500x500");
-        var result = JSON.parse(imgq);
+        var ampr = imgq.replace(/&amp;/gi, "&");
+        var result = JSON.parse(ampr);
         var check = result.albums;
         //error handling
         if (check === undefined) {
@@ -152,7 +157,9 @@ app.get('/album', (req, res) => {
             var replacemediaurl = replacemediaurltxt.replace(/preview.saavncdn.com/gi, 'aac.saavncdn.com');
             var replaceqs = replacemediaurl.replace(/_96_p/gi, '_160');
             var imgq = replaceqs.replace(/150x150/gi, '500x500');
-            var result = JSON.parse(imgq);
+            var ampr = imgq.replace(/&amp;/gi, "&");
+            var copr = ampr.replace(/&copy;/gi, "©");
+            var result = JSON.parse(copr);
             var output = JSON.stringify(result);
             res.send(output);
         }
@@ -196,7 +203,9 @@ app.get('/link', (req, res) => {
                     var replacemediaurl = replacemediaurltxt.replace('preview.saavncdn.com', 'aac.saavncdn.com');
                     var replaceqs = replacemediaurl.replace('_96_p', '_160');
                     var imgq = replaceqs.replace('150x150', '500x500');
-                    var result = JSON.parse(imgq);
+                    var ampr = imgq.replace(/&amp;/gi, "&");
+                    var copr = ampr.replace(/&copy;/gi, "©");
+                    var result = JSON.parse(copr);
                     var songresult = result.tuhin;
                     var output = JSON.stringify(songresult);
                     res.send(output);
