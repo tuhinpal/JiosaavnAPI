@@ -314,6 +314,7 @@ forever start index.js
 ### Using this API:
 - [Musicder](https://github.com/cachecleanerjeet/Musicder "Musicder")
 - [Musicder Bot](https://t.me/musicder_bot "Musicder Bot")
+- [Saavn Downloader Extension](https://github.com/naqushab/saavn-downloader-extension "saavn-downloader-extension")
 
 *Impliment this API on your Project  & send a message [here](https://t.me/t_projects "here") to get featured in this section.*
 <br>
