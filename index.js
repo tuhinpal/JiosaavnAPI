@@ -1,6 +1,6 @@
 //Made by Tuhin
 //Visit https://tu.hin.life
-//Contact me@mailtuhin.ml
+//Contact me@thetuhin.com
 
 const express = require('express');
 const request = require('request');
@@ -24,19 +24,22 @@ app.get('/search', (req, res) => {
         'url': (searchbase) + (query)
     };
     request(options, function(error, response) {
-        if (error) throw new Error(error);
-        var searchraw = (response.body);
-        var imgq = searchraw.replace(/50x50/gi, "500x500");
-        var ampr = imgq.replace(/&amp;/gi, "&");
-        var result = JSON.parse(ampr);
-        var check = result.songs;
-        //error handling
-        if (check === undefined) {
+        if (error) {
             res.send(`{"result": "false"}`);
         } else {
-            var songresult = result.songs.data;
-            var output = JSON.stringify(songresult);
-            res.send(output);
+            var searchraw = (response.body);
+            var imgq = searchraw.replace(/50x50/gi, "500x500");
+            var ampr = imgq.replace(/&amp;/gi, "&");
+            var result = JSON.parse(ampr);
+            var check = result.songs;
+            //error handling
+            if (check === undefined) {
+                res.send(`{"result": "false"}`);
+            } else {
+                var songresult = result.songs.data;
+                var output = JSON.stringify(songresult);
+                res.send(output);
+            }
         }
     });
     res.status(200);
@@ -54,25 +57,27 @@ app.get('/song', (req, res) => {
         'url': (songbase) + (id)
     };
     request(options, function(error, response) {
-        if (error) throw new Error(error);
-        var songraw = (response.body);
-        //error handling
-        if ((songraw.includes("[]")) == true) {
+        if (error) {
             res.send(`{"result": "false"}`);
         } else {
-            var replaceid = songraw.replace(id, 'tuhin');
-            var replacemediaurltxt = replaceid.replace('media_preview_url', 'media_url');
-            var replacemediaurl = replacemediaurltxt.replace('preview.saavncdn.com', 'aac.saavncdn.com');
-            var replaceqs = replacemediaurl.replace('_96_p', '_160');
-            var imgq = replaceqs.replace('150x150', '500x500');
-            var ampr = imgq.replace(/&amp;/gi, "&");
-            var copr = ampr.replace(/&copy;/gi, "©");
-            var result = JSON.parse(copr);
-            var songresult = result.tuhin;
-            var output = JSON.stringify(songresult);
-            res.send(output);
+            var songraw = (response.body);
+            //error handling
+            if ((songraw.includes("[]")) == true) {
+                res.send(`{"result": "false"}`);
+            } else {
+                var replaceid = songraw.replace(id, 'tuhin');
+                var replacemediaurltxt = replaceid.replace('media_preview_url', 'media_url');
+                var replacemediaurl = replacemediaurltxt.replace('preview.saavncdn.com', 'aac.saavncdn.com');
+                var replaceqs = replacemediaurl.replace('_96_p', '_160');
+                var imgq = replaceqs.replace('150x150', '500x500');
+                var ampr = imgq.replace(/&amp;/gi, "&");
+                var copr = ampr.replace(/&copy;/gi, "©");
+                var result = JSON.parse(copr);
+                var songresult = result.tuhin;
+                var output = JSON.stringify(songresult);
+                res.send(output);
+            }
         }
-
     });
     res.status(200);
     res.header('Access-Control-Allow-Origin', '*');
@@ -89,17 +94,20 @@ app.get('/lyrics', (req, res) => {
         'url': (lyricsbase) + (id)
     };
     request(options, function(error, response) {
-        if (error) throw new Error(error);
-        var lyricsraw = (response.body);
-        var result = JSON.parse(lyricsraw);
-        var lyricsresult = result.lyrics;
-        //error handling
-        if (lyricsresult === undefined) {
+        if (error) {
             res.send(`{"result": "false"}`);
         } else {
-            var quoter = lyricsresult.replace(/"/gi, "'");
-            var format = `{"lyrics":"` + (quoter) + `"}`;
-            res.send(format);
+            var lyricsraw = (response.body);
+            var result = JSON.parse(lyricsraw);
+            var lyricsresult = result.lyrics;
+            //error handling
+            if (lyricsresult === undefined) {
+                res.send(`{"result": "false"}`);
+            } else {
+                var quoter = lyricsresult.replace(/"/gi, "'");
+                var format = `{"lyrics":"` + (quoter) + `"}`;
+                res.send(format);
+            }
         }
     });
     res.status(200);
@@ -117,19 +125,22 @@ app.get('/albumsearch', (req, res) => {
         'url': (searchbase) + (query)
     };
     request(options, function(error, response) {
-        if (error) throw new Error(error);
-        var searchraw = (response.body);
-        var imgq = searchraw.replace(/50x50/gi, "500x500");
-        var ampr = imgq.replace(/&amp;/gi, "&");
-        var result = JSON.parse(ampr);
-        var check = result.albums;
-        //error handling
-        if (check === undefined) {
+        if (error) {
             res.send(`{"result": "false"}`);
         } else {
-            var albumresult = result.albums.data;
-            var output = JSON.stringify(albumresult);
-            res.send(output);
+            var searchraw = (response.body);
+            var imgq = searchraw.replace(/50x50/gi, "500x500");
+            var ampr = imgq.replace(/&amp;/gi, "&");
+            var result = JSON.parse(ampr);
+            var check = result.albums;
+            //error handling
+            if (check === undefined) {
+                res.send(`{"result": "false"}`);
+            } else {
+                var albumresult = result.albums.data;
+                var output = JSON.stringify(albumresult);
+                res.send(output);
+            }
         }
     });
     res.status(200);
@@ -147,21 +158,24 @@ app.get('/album', (req, res) => {
         'url': (albumbase) + (id)
     };
     request(options, function(error, response) {
-        if (error) throw new Error(error);
-        var albumraw = (response.body);
-        //error handling
-        if ((albumraw.includes(`{"error":{"code":"INPUT_INVALID","msg":"Empty strings are not allowed."}}`)) == true) {
+        if (error) {
             res.send(`{"result": "false"}`);
         } else {
-            var replacemediaurltxt = albumraw.replace(/media_preview_url/gi, 'media_url');
-            var replacemediaurl = replacemediaurltxt.replace(/preview.saavncdn.com/gi, 'aac.saavncdn.com');
-            var replaceqs = replacemediaurl.replace(/_96_p/gi, '_160');
-            var imgq = replaceqs.replace(/150x150/gi, '500x500');
-            var ampr = imgq.replace(/&amp;/gi, "&");
-            var copr = ampr.replace(/&copy;/gi, "©");
-            var result = JSON.parse(copr);
-            var output = JSON.stringify(result);
-            res.send(output);
+            var albumraw = (response.body);
+            //error handling
+            if ((albumraw.includes(`{"error":{"code":"INPUT_INVALID","msg":"Empty strings are not allowed."}}`)) == true) {
+                res.send(`{"result": "false"}`);
+            } else {
+                var replacemediaurltxt = albumraw.replace(/media_preview_url/gi, 'media_url');
+                var replacemediaurl = replacemediaurltxt.replace(/preview.saavncdn.com/gi, 'aac.saavncdn.com');
+                var replaceqs = replacemediaurl.replace(/_96_p/gi, '_160');
+                var imgq = replaceqs.replace(/150x150/gi, '500x500');
+                var ampr = imgq.replace(/&amp;/gi, "&");
+                var copr = ampr.replace(/&copy;/gi, "©");
+                var result = JSON.parse(copr);
+                var output = JSON.stringify(result);
+                res.send(output);
+            }
         }
     });
     res.status(200);
