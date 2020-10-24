@@ -300,6 +300,7 @@ forever start index.js
 
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/cachecleanerjeet/jiosaavnapi/tree/master)<br>
+[![Deploy with Vercel](https://vercel.com/button)](https://github.com/cachecleanerjeet/serverless-jiosaavn-api)<br>
 
 
 ### Error handling :
