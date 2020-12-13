@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
- <img src="https://telegra.ph/file/67a4d6a3a6879bbe40a24.png" alt="Jiosaavn API" width="300">
+ <img src="https://telegra.ph/file/3f4ec4d689573bd4de154.png" alt="Jiosaavn API" width="300">
   <br>
 Jiosaavn API
 <br>
