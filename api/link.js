@@ -24,7 +24,7 @@ module.exports = async(req, res) => {
                 year: data.year,
                 primary_artists: data.primary_artists,
                 singers: data.singers,
-                image: data.image.replace("50x50", "500x500"),
+                image: data.image.replace("150x150", "500x500"),
                 label: data.label,
                 albumid: data.albumid,
                 language: data.language,
@@ -40,7 +40,7 @@ module.exports = async(req, res) => {
                         url: data.media_preview_url.replace('preview.saavncdn.com', 'aac.saavncdn.com').replace('_96_p', '_160')
                     },
                     {
-                        quality: "96_P",
+                        quality: "320_P",
                         url: data.media_preview_url.replace('preview.saavncdn.com', 'aac.saavncdn.com').replace('_96_p', '_320')
                     }
                 ],
