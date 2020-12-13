@@ -32,15 +32,15 @@ module.exports = async(req, res) => {
                 has_lyrics: data.has_lyrics,
                 media_url: data.media_preview_url.replace('preview.saavncdn.com', 'aac.saavncdn.com').replace('_96_p', '_160'),
                 other_qualities: [{
-                        quality: "96_P",
+                        quality: "96_KBPS",
                         url: data.media_preview_url.replace('preview.saavncdn.com', 'aac.saavncdn.com')
                     },
                     {
-                        quality: "160_P",
+                        quality: "160_KBPS",
                         url: data.media_preview_url.replace('preview.saavncdn.com', 'aac.saavncdn.com').replace('_96_p', '_160')
                     },
                     {
-                        quality: "320_P",
+                        quality: "320_KBPS",
                         url: data.media_preview_url.replace('preview.saavncdn.com', 'aac.saavncdn.com').replace('_96_p', '_320')
                     }
                 ],
