@@ -1,29 +1,23 @@
 {
-    "name": "jiosaavnapi",
-    "version": "1.0.0",
-    "description": "Unofficial JioSaavn API written in Javascript",
-    "main": "index.js",
-    "scripts": {
-        "start": "node index.js",
-        "test": "node index.js"
-    },
-    "dependencies": {
-        "express": "^4.17.1",
-        "request": "^2.88.2"
-    },
+    "name": "jiosaavn_api",
+    "version": "2.0.0",
+    "description": "Unofficial Serverless JioSaavn API written in Javascript",
+    "main": "api/index.js",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/cachecleanerjeet/jiosaavnapi.git"
+        "url": "git+https://github.com/cachecleanerjeet/JiosaavnAPI.git"
+    },
+    "dependencies": {
+        "axios": "^0.21.0"
     },
     "keywords": [
         "jiosaavn-api",
-        "jiosaavn-javascript-api",
-        "jiosaavn"
+        "jiosaavn-serverless-api"
     ],
     "author": "Tuhin Kanti Pal",
     "license": "Apache-2.0",
     "bugs": {
-        "url": "https://github.com/cachecleanerjeet/jiosaavnapi/issues"
+        "url": "https://github.com/cachecleanerjeet/JiosaavnAPI/issues"
     },
-    "homepage": "https://github.com/cachecleanerjeet/jiosaavnapi#readme"
+    "homepage": "https://github.com/cachecleanerjeet/JiosaavnAPI#readme"
 }

@@ -1,0 +1,31 @@
+{
+    "routes": [{
+            "src": "/",
+            "dest": "/api"
+        },
+        {
+            "src": "/search",
+            "dest": "/api/search"
+        },
+        {
+            "src": "/song",
+            "dest": "/api/song"
+        },
+        {
+            "src": "/lyrics",
+            "dest": "/api/lyrics"
+        },
+        {
+            "src": "/albumsearch",
+            "dest": "/api/albumsearch"
+        },
+        {
+            "src": "/album",
+            "dest": "/api/album"
+        },
+        {
+            "src": "/link",
+            "dest": "/api/link"
+        }
+    ]
+}
