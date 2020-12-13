@@ -21,7 +21,7 @@ module.exports = async(req, res) => {
                 year: data.year,
                 primary_artists: data.primary_artists,
                 singers: data.singers,
-                image: data.image.replace("50x50", "500x500"),
+                image: data.image.replace("150x150", "500x500"),
                 label: data.label,
                 albumid: data.albumid,
                 language: data.language,
