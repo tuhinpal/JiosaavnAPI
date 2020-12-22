@@ -30,7 +30,7 @@ module.exports = async(req, res) => {
                 media_url: data.media_preview_url.replace('preview.saavncdn.com', 'aac.saavncdn.com').replace('_96_p', '_160'),
                 other_qualities: [{
                         quality: "96_KBPS",
-                        url: data.media_preview_url.replace('preview.saavncdn.com', 'aac.saavncdn.com')
+                        url: data.media_preview_url.replace('preview.saavncdn.com', 'aac.saavncdn.com').replace('_96_p', '_96')
                     },
                     {
                         quality: "160_KBPS",
