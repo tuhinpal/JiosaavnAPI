@@ -9,7 +9,7 @@ module.exports = async(req, res) => {
 
     axios({
         method: 'get',
-        url: `https://www.jiosaavn.com/api.php?__call=autocomplete.get&_format=json&_marker=0&cc=in&includeMetaTags=1&query=${reqQuery}`
+        url: `https://www.jiosaavn.com/api.php?__call=autocomplete.get&query=${reqQuery}&_format=json&_marker=0&ctx=wap6dot0`
     })
 
     .then(async function(response) {
