@@ -16,7 +16,7 @@ module.exports = async(req, res) => {
     })
 
     .then(async function(response) {
-            var data = JSON.parse(JSON.stringify(response.data).replace(songId, "TempID").replace(/&amp;/gi, "&").replace(/&copy;/gi, "©")).TempID
+            var data = JSON.parse(JSON.stringify(response.data).replace(songId, "TempID").replace(/&amp;/gi, "&").replace(/&quot;/gi, "'").replace(/&copy;/gi, "©")).TempID
             res.json({
                 id: data.id,
                 song: data.song,
