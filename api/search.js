@@ -9,27 +9,29 @@ module.exports = async(req, res) => {
 
     axios({
         method: 'get',
-        url: `https://www.jiosaavn.com/api.php?__call=autocomplete.get&query=${reqQuery}&_format=json&_marker=0&ctx=wap6dot0`
+        url: `https://www.jiosaavn.com/api.php?p=1&q=${reqQuery.replace(/ /gi, '+')}&_format=json&_marker=0&api_version=4&ctx=wap6dot0&n=10&__call=search.getResults`
     })
 
     .then(async function(response) {
-            var data = JSON.parse(JSON.stringify(response.data).replace(/&amp;/gi, "&").replace(/&copy;/gi, "©").replace(/50x50/gi, "500x500")).songs.data
+            var data = JSON.parse(JSON.stringify(response.data.results).replace(/&amp;/gi, "&").replace(/&copy;/gi, "©").replace(/150x150/gi, "500x500"))
             var songRes = []
             for (i = 0; i < data.length; i++) {
+                var primary_artists = allArtists(data[i].more_info.artistMap.primary_artists)
                 songRes.push({
                     id: data[i].id,
                     title: data[i].title,
                     image: data[i].image,
-                    album: data[i].album,
-                    description: data[i].description,
-                    position: data[i].position,
+                    album: data[i].more_info.album,
+                    description: `${data[i].more_info.album} · ${primary_artists}`,
+                    position: i + 1,
                     more_info: {
                         vlink: data[i].more_info.vlink,
-                        primary_artists: data[i].more_info.primary_artists,
-                        singers: data[i].more_info.singers,
-                        language: data[i].more_info.language,
+                        primary_artists,
+                        singers: primary_artists,
+                        language: data[i].language,
+                        album_id: data[i].more_info.album_id
                     },
-                    url: data[i].url
+                    url: data[i].perma_url
                 })
             }
             if (JSON.stringify(songRes) !== "[]") {
@@ -41,4 +43,16 @@ module.exports = async(req, res) => {
         .catch(function(error) {
             res.json({ result: "false" })
         })
+}
+
+function allArtists(array) {
+    let artistdata = ''
+    array.forEach((object, i) => {
+        if (i == 0) {
+            artistdata += object.name
+        } else {
+            artistdata += `, ${object.name}`
+        }
+    });
+    return artistdata
 }
