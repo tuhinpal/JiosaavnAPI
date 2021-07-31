@@ -1,6 +1,6 @@
 const axios = require('axios')
 
-module.exports = async(req, res) => {
+module.exports = async (req, res) => {
     const reqQuery = req.query.query
     res.setHeader("Access-Control-Allow-Origin", "*")
     res.setHeader("Cache-Control", "s-maxage=300, stale-while-revalidate")
@@ -12,7 +12,7 @@ module.exports = async(req, res) => {
         url: `https://www.jiosaavn.com/api.php?__call=autocomplete.get&_format=json&_marker=0&cc=in&includeMetaTags=1&query=${reqQuery}`
     })
 
-    .then(async function(response) {
+        .then(async function (response) {
             var data = JSON.parse(JSON.stringify(response.data).replace(/&amp;/gi, "&").replace(/&copy;/gi, "©").replace(/50x50/gi, "500x500")).albums.data
             var albumRes = []
             for (i = 0; i < data.length; i++) {
@@ -31,13 +31,13 @@ module.exports = async(req, res) => {
                     url: data[i].url
                 })
             }
-            if (JSON.stringify(albumRes) !== "[]") {
+            if (albumRes.length !== 0) {
                 res.json(albumRes)
             } else {
                 res.json({ result: "false" })
             }
         })
-        .catch(function(error) {
+        .catch(function (error) {
             res.json({ result: "false" })
         })
 }
