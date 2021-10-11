@@ -1,58 +1,54 @@
-const axios = require('axios')
+const setHeader = require("../helper/setHeader");
+const { songsearchFromSTRING } = require("../helper/base");
+const fetch = require("../helper/fetch");
+const unescape = require("../helper/unescape");
+const handleError = require("../helper/handleError");
+const helperFunc = require("../helper/helperFunc");
+const { APP_URL } = require("../config");
 
 module.exports = async (req, res) => {
-    var reqQuery = req.query.query
-    res.setHeader("Access-Control-Allow-Origin", "*")
-    res.setHeader("Cache-Control", "s-maxage=300, stale-while-revalidate")
-    res.setHeader("Open-Source", "https://github.com/cachecleanerjeet/JiosaavnAPI")
-    res.setHeader("Made-By", "Tuhin Kanti Pal, https://github.com/cachecleanerjeet")
+  setHeader(res);
 
-    axios({
-        method: 'get',
-        url: `https://www.jiosaavn.com/api.php?p=1&q=${reqQuery.replace(/ /gi, '+')}&_format=json&_marker=0&api_version=4&ctx=wap6dot0&n=10&__call=search.getResults`
-    })
-
-        .then(async function (response) {
-            var data = JSON.parse(JSON.stringify(response.data.results).replace(/&amp;/gi, "&").replace(/&copy;/gi, "©").replace(/150x150/gi, "500x500"))
-            var songRes = []
-            for (i = 0; i < data.length; i++) {
-                var primary_artists = allArtists(data[i].more_info.artistMap.primary_artists)
-                songRes.push({
-                    id: data[i].id,
-                    title: data[i].title,
-                    image: data[i].image,
-                    album: data[i].more_info.album,
-                    description: `${data[i].more_info.album} · ${primary_artists}`,
-                    position: i + 1,
-                    more_info: {
-                        vlink: data[i].more_info.vlink,
-                        primary_artists,
-                        singers: primary_artists,
-                        language: data[i].language,
-                        album_id: data[i].more_info.album_id
-                    },
-                    url: data[i].perma_url
-                })
-            }
-            if (songRes.length !== 0) {
-                res.json(songRes)
-            } else {
-                res.json({ result: "false" })
-            }
-        })
-        .catch(function (error) {
-            res.json({ result: "false" })
-        })
-}
-
-function allArtists(array) {
-    let artistdata = ''
-    array.forEach((object, i) => {
-        if (i == 0) {
-            artistdata += object.name
-        } else {
-            artistdata += `, ${object.name}`
-        }
+  try {
+    var response = await fetch({
+      url: songsearchFromSTRING(req.query.query),
+      method: "get",
     });
-    return artistdata
-}
+    var data = unescape(response.data).results;
+
+    res.status(200).json({
+      status: true,
+      serverTime: new Date().getTime(),
+      searchQuery: req.query.query,
+      results: data.map((result) => {
+        let images = helperFunc.makeDifferentQualityImages(result.image);
+        let singers = result.more_info.artistMap.primary_artists
+          .map((artist) => artist.name)
+          .slice(0, 3)
+          .join(", ");
+
+        return {
+          id: result.id,
+          title: result.title,
+          image: images["150x150"],
+          images,
+          album: result.more_info.album,
+          description: `${result.more_info.album} · ${singers}`,
+          more_info: {
+            vlink: result.more_info.vlink,
+            singers,
+            language: helperFunc.ucfirst(result.language),
+            album_id: result.more_info.album_id,
+          },
+          perma_url: result.perma_url,
+          api_url: {
+            song: `${APP_URL}/song?id=${result.id}`,
+            album: `${APP_URL}/album?id=${result.more_info.album_id}`,
+          },
+        };
+      }),
+    });
+  } catch (error) {
+    handleError(error, res);
+  }
+};

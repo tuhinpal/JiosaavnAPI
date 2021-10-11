@@ -1,43 +1,49 @@
-const axios = require('axios')
+const setHeader = require("../helper/setHeader");
+const { albumsearchFromSTRING } = require("../helper/base");
+const fetch = require("../helper/fetch");
+const unescape = require("../helper/unescape");
+const handleError = require("../helper/handleError");
+const helperFunc = require("../helper/helperFunc");
+const { APP_URL } = require("../config");
 
 module.exports = async (req, res) => {
-    const reqQuery = req.query.query
-    res.setHeader("Access-Control-Allow-Origin", "*")
-    res.setHeader("Cache-Control", "s-maxage=300, stale-while-revalidate")
-    res.setHeader("Open-Source", "https://github.com/cachecleanerjeet/JiosaavnAPI")
-    res.setHeader("Made-By", "Tuhin Kanti Pal, https://github.com/cachecleanerjeet")
+  setHeader(res);
 
-    axios({
-        method: 'get',
-        url: `https://www.jiosaavn.com/api.php?__call=autocomplete.get&_format=json&_marker=0&cc=in&includeMetaTags=1&query=${reqQuery}`
-    })
+  try {
+    var response = await fetch({
+      url: albumsearchFromSTRING(req.query.query),
+      method: "get",
+    });
+    var data = unescape(response.data).albums.data;
 
-        .then(async function (response) {
-            var data = JSON.parse(JSON.stringify(response.data).replace(/&amp;/gi, "&").replace(/&copy;/gi, "©").replace(/50x50/gi, "500x500")).albums.data
-            var albumRes = []
-            for (i = 0; i < data.length; i++) {
-                albumRes.push({
-                    id: data[i].id,
-                    title: data[i].title,
-                    image: data[i].image,
-                    music: data[i].music,
-                    description: data[i].description,
-                    position: data[i].position,
-                    more_info: {
-                        year: data[i].more_info.year,
-                        song_pids: data[i].more_info.song_pids,
-                        language: data[i].more_info.language,
-                    },
-                    url: data[i].url
-                })
-            }
-            if (albumRes.length !== 0) {
-                res.json(albumRes)
-            } else {
-                res.json({ result: "false" })
-            }
-        })
-        .catch(function (error) {
-            res.json({ result: "false" })
-        })
-}
+    res.status(200).json({
+      status: true,
+      serverTime: new Date().getTime(),
+      searchQuery: req.query.query,
+      results: data.map((result) => {
+        let images = helperFunc.makeDifferentQualityImages(result.image);
+        return {
+          id: result.id,
+          title: result.title,
+          image: images["150x150"],
+          images,
+          music: result.music,
+          description: result.description,
+          more_info: {
+            year: Number(result.more_info.year),
+            language: helperFunc.ucfirst(result.more_info.language),
+          },
+          url: result.url,
+          api_url: {
+            songs: helperFunc.generateAPIUrlsFromPids(
+              result.more_info.song_pids
+            ),
+            album: `${APP_URL}/album?id=${result.id}`,
+          },
+        };
+      }),
+    });
+  } catch (error) {
+    handleError(error, res);
+  }
+};
