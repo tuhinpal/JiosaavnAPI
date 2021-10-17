@@ -1,5 +1,9 @@
 const decode = require("unescape");
 
 module.exports = function (data) {
-  return JSON.parse(decode(JSON.stringify(data)));
+  try {
+    return JSON.parse(decode(JSON.stringify(data)));
+  } catch (error) {
+    return data;
+  }
 };

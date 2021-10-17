@@ -8,7 +8,7 @@ const makeSongResponse = require("../helper/makeSongResponse");
 module.exports = async (req, res) => {
   setHeader(res);
 
-  var songId = await getId(req.query.query);
+  var songId = await getId(req.query.link);
 
   try {
     var response = await fetch({
@@ -20,9 +20,9 @@ module.exports = async (req, res) => {
     res.status(200).json({
       status: true,
       serverTime: new Date().getTime(),
-      queryLink: req.query.query,
+      queryLink: req.query.link,
       ...(await makeSongResponse(data, {
-        addLyrics: req.query.lyrics ? true : false,
+        addLyrics: req.query.lyrics === "true" ? true : false,
       })),
     });
   } catch (error) {

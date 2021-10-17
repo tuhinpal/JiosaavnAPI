@@ -20,7 +20,7 @@ module.exports = async (req, res) => {
       status: true,
       serverTime: new Date().getTime(),
       ...(await makeSongResponse(data, {
-        addLyrics: req.query.lyrics ? true : false,
+        addLyrics: req.query.lyrics === "true" ? true : false,
       })),
     });
   } catch (error) {

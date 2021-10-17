@@ -9,7 +9,9 @@
   },
   "dependencies": {
     "axios": "^0.21.0",
+    "express": "^4.17.1",
     "format-duration": "^1.4.0",
+    "swagger-ui-express": "^4.1.6",
     "unescape": "^1.0.1"
   },
   "keywords": [
