@@ -4,6 +4,7 @@ const fetch = require("../helper/fetch");
 const unescape = require("../helper/unescape");
 const handleError = require("../helper/handleError");
 const makeSongResponse = require("../helper/makeSongResponse");
+const decode = require("unescape");
 
 module.exports = async (req, res) => {
   setHeader(res);
@@ -28,7 +29,7 @@ module.exports = async (req, res) => {
       status: true,
       serverTime: new Date().getTime(),
       albumid: data.albumid,
-      title: data.title,
+      title: decode(data.title),
       name: data.name,
       year: data.year,
       primary_artists: data.primary_artists,
@@ -36,7 +37,6 @@ module.exports = async (req, res) => {
       songs,
       perma_url: data.perma_url,
       release_date: data.release_date,
-      repo_url: "https://github.com/cachecleanerjeet/JiosaavnAPI",
     });
   } catch (error) {
     handleError(error, res);

@@ -9,7 +9,7 @@ module.exports = {
   basePath: "/",
   license: {
     name: "Apache 2.0",
-    url: "https://github.com/cachecleanerjeet/JiosaavnAPI/blob/v3/LICENSE",
+    url: "https://github.com/tuhinpal/JiosaavnAPI/blob/v3/LICENSE",
   },
   tags: [
     {

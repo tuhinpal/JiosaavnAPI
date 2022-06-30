@@ -2,6 +2,7 @@ const { APP_URL } = require("../config");
 const formatDuration = require("format-duration");
 const helperFunc = require("./helperFunc");
 const getSongLyrics = require("./getSongLyrics");
+const decode = require("unescape");
 
 module.exports = async function (song, options) {
   let media_urls = helperFunc.makeDifferentQualityMediaUrls(
@@ -11,8 +12,8 @@ module.exports = async function (song, options) {
 
   return {
     id: song.id,
-    song: song.song,
-    album: song.album,
+    song: decode(song.song),
+    album: decode(song.album),
     year: Number(song.year),
     primary_artists: song.primary_artists,
     singers: song.singers,
