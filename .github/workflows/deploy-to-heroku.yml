@@ -1,0 +1,20 @@
+name: Deploy to heroku
+
+on:
+  push:
+    branches:
+      - v3
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: CDNievas/heroku-action@v1.0 # This is the action
+        with:
+          heroku_email: ${{secrets.HEROKU_EMAIL}}
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "jiosaavn-api-v3"
+          procfile: "web: npm start"
+          branch: "v3"
+# Recently heroku faced a massive github token leakage. So, this is the best way to deploy with heroku without any critical flaw.
