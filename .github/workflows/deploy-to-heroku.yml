@@ -15,6 +15,5 @@ jobs:
           heroku_email: ${{secrets.HEROKU_EMAIL}}
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "jiosaavn-api-v3"
-          procfile: "web: npm start"
           branch: "v3"
 # Recently heroku faced a massive github token leakage. So, this is the best way to deploy with heroku without any critical flaw.
