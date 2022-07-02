@@ -1,6 +1,6 @@
 name: Deploy to heroku
 
-on: 
+on:
   push:
     branches:
       - v3
@@ -9,18 +9,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-    - name: Login to Heroku Container registry
-      env: 
-        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-      run: heroku container:login 
-    - name: Build and push
-      env:
-        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-      run: heroku container:push -a ${{ secrets.HEROKU_APP_NAME }} web 
-    - name: Release
-      env:
-        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-      run: heroku container:release -a ${{ secrets.HEROKU_APP_NAME }} web 
+      - uses: actions/checkout@v1
+      - name: Login to Heroku
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        run: heroku login
 
+      - name: Set git remote
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+        run: heroku git:remote -a "${{ secrets.HEROKU_APP_NAME }}" && git add . && git commit -am "Cool" && git push heroku
 # Recently heroku faced a massive github token leakage. So, this is the best way to deploy with heroku without any critical flaw.
